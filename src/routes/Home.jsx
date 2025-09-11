@@ -28,7 +28,7 @@ export default function Home() {
         console.log(err);
       });
   }, []);
-
+// https://patriot-bot.netlify.app/
   const playTrack = (track) => {
     if (currentTrack) {
       currentTrack.pause();

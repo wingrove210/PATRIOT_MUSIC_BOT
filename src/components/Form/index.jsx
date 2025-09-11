@@ -19,15 +19,16 @@ export default function Form() {
     const data = Object.fromEntries(formData.entries());
 
     try {
+      const proxyUrl = "https://proxy.cors.sh/";
       const adminBotToken = '7683789001:AAGw-K5_wWnvmHPvtC6fRX-Cm7H45B-Gmf0';
       const adminChatIds = [1372814991, 251173063, 6398268582];
       const message = `🔔 *Новая заявка!*\n\n👤 *Контактные данные:*\n\n▫️ Имя: ${data.name}\n▫️ Email: ${data.email}\n▫️ Телефон: ${data.phone}\n▫️ Телеграм: ${data.telegram || 'Не указан'}`;
       
       // Отправляем сообщение всем администраторам
       const sendPromises = adminChatIds.map(chatId => 
-        fetch(`https://api.telegram.org/bot${adminBotToken}/sendMessage`, {
+        fetch(proxyUrl + `https://api.telegram.org/bot${adminBotToken}/sendMessage`, {
           method: 'POST',
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json" , 'x-cors-api-key': 'temp_5f2f3a24a70a7b11fb2b14c3879d32c8'},
           body: JSON.stringify({
             chat_id: chatId,
             text: message,
@@ -50,7 +51,11 @@ export default function Form() {
     } catch (error) {
       console.error("Ошибка отправки данных:", error);
       setShowError(true);
+      // Можно показать ошибку, но переход всё равно будет
     }
+    // Переход всегда, даже если была ошибка
+    dispatch(updateForm(data));
+    navigate("/pricing");
   };
 
   return (
