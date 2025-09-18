@@ -14,7 +14,7 @@ function isMobile() {
 }
 
 function App() {
-  const [mobile, setMobile] = useState(true);
+  const [, setMobile] = useState(true);
 
   useEffect(() => {
     setMobile(isMobile());
@@ -25,22 +25,22 @@ function App() {
     }
   }, []);
 
-  if (!mobile) {
-    return (
-      <div style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#111",
-        color: "#fff",
-        fontSize: "1.5rem",
-        textAlign: "center"
-      }}>
-        Доступно только с мобильного устройства
-      </div>
-    );
-  }
+  // if (!mobile) {
+  //   return (
+  //     <div style={{
+  //       minHeight: "100vh",
+  //       display: "flex",
+  //       alignItems: "center",
+  //       justifyContent: "center",
+  //       background: "#111",
+  //       color: "#fff",
+  //       fontSize: "1.5rem",
+  //       textAlign: "center"
+  //     }}>
+  //       Доступно только с мобильного устройства
+  //     </div>
+  //   );
+  // }
 
   return (
     <Router>
