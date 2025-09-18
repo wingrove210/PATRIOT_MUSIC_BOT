@@ -20,7 +20,7 @@ function App() {
     setMobile(isMobile());
     if (tg) {
       tg.expand();
-      tg.requestFullscreen();
+      // tg.requestFullscreen();
       tg.ready(); 
     }
   }, []);
