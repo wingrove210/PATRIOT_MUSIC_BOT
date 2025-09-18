@@ -28,7 +28,7 @@ export default function Home() {
         console.log(err);
       });
   }, []);
-// https://patriot-bot.netlify.app/
+
   const playTrack = (track) => {
     if (currentTrack) {
       currentTrack.pause();
@@ -55,9 +55,15 @@ export default function Home() {
         <p className="text-red-500">{error}</p>
       ) : (
         <Layout>
-          <Video />
-          <Catalog products={products} playTrack={playTrack} />
-          <FeedBack/>
+          <div style={{ marginBottom: 12 }}>
+            <Video />
+          </div>
+          <div style={{ marginBottom: 12 }}>
+            <Catalog products={products} playTrack={playTrack} />
+          </div>
+          <div style={{ marginBottom: 12 }}>
+            <FeedBack />
+          </div>
           <Player />
         </Layout>
       )}
